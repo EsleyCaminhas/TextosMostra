@@ -521,6 +521,9 @@ Por fim</p>
 <p><span class="math display">\[P(v)  = \sum_{x \in \Omega} P(v \mid X_1=x)P(X_1=x)\]</span>
 Logo</p>
 <p><span class="math display">\[P(v) = 0\frac{1}{36} + 0\frac{2}{36} + \frac{3}{9}\frac{3}{36} + \frac{4}{10}\frac{4}{36} + \dots + 1\frac{2}{36} + 0\frac{1}{36} = \frac{244}{495} \approx 0.4929 \]</span></p>
+</div>
+<div id="simulaçao-de-10000-jogos-de-craps-em-r" class="section level3" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> Simulaçao de 10000 jogos de Craps em <em>R</em></h3>
 <pre class="r"><code>somar_dois_dados = function(){
   d = sample(c(1,2,3,4,5,6), 2, replace = T)
   return(sum(d)) 
@@ -569,7 +572,7 @@ while (n &lt; 10000){
   }
 }
 sprintf(&quot;O jogador ganhou %d das %d partidas&quot;, v, n )</code></pre>
-<pre><code>[1] &quot;O jogador ganhou 4893 das 10000 partidas&quot;</code></pre>
+<pre><code>[1] &quot;O jogador ganhou 4921 das 10000 partidas&quot;</code></pre>
 </div>
 </div>
 <div id="referencias" class="section level2" number="1.6">
