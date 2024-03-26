@@ -1,0 +1,63 @@
+\documentclass[a4paper]{article}
+\usepackage[outer=1.5cm, inner=1.5cm, bottom=4cm, top=35mm, marginparwidth=0pt, headheight=20mm]{geometry}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{graphicx,float}
+\usepackage{caption}
+\fancyhf{}
+\fancyhead[L]{\includegraphics[width=0.25\textwidth]{logo.png}}
+\fancyhead[R]{\includegraphics[scale=0.275]{logo 2.png}}
+
+\fancyfoot[C]{\includegraphics[scale=0.5]{ufes.png}}
+
+\usepackage{dirtytalk}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+\title{\textbf{Estatística e sua Empregabilidade nas Ciências Básicas para
+o Desenvolvimento Sustentável e na Melhora da Qualidade do Ensino}}
+\author{\textbf{} Departamento de Estatística. Universidade federal do Espírito Santo, Vitória, Brasil.}
+\date{}
+
+\maketitle\thispagestyle{fancy}
+
+
+\begin{multicols}{2}
+
+    A estatística está presente no nosso dia a dia mesmo sem percebermos, perguntas do tipo \say{Qual a chance de chover hoje?} e \say{Será que meu time vai ser rebaixado esse ano?} demandam de maneira inerente um pensamento estatístico para serem respondidas.
+
+    Em seu livro Introdução à Estatística Mario F. Triola define \say{Estatística é ciência do planejamento de estudos e experimentos, da obtenção de dados e, em seguida, de sua organização, resumo, apresentação, análise e interpretação e, então, estabelecimento de conclusões com base nesses dados.}, a partir dessa definição podemos perceber o quão importante é a difusão dos conceitos estatísticos tanto na esfera acadêmica quanto para o cidadão comum da sociedade.
+
+    
+        \begin{figure}[H]
+            \centering
+            \captionsetup{justification=centering}
+            \includegraphics[width=5cm]{curve.png}
+            \caption*{ \small Figura 1. A análise de dados é um dos pilares da estatística}
+        \end{figure}
+        
+    \say{Desenvolvimento sustentável significa suprir as necessidades do presente sem afetar a habilidade das gerações futuras de suprirem as próprias necessidades} (Gro Harlem Brundtland, 1987).
+
+    O sustentável está na interseção de três elementos: o social, o econômico e o ambiental. Logo, no desenvolvimento sustentável, temos um crescimento econômico que leva em conta a conservação do meio ambiente e também a inclusão e o progresso social.
+    
+        \begin{figure}[H]
+            \centering
+            \captionsetup{justification=centering}
+            \includegraphics[width=5cm]{triplet.png}
+            \caption*{ \small Figura 2. A tríade da sustentabilidade}
+        \end{figure}
+        
+    No desenvolvimento sustentável a estatística está inserida em indicadores, por exemplo, para Informação Demográfica e Socioeconômica, Informação Econômica e Informação Geográfica, sendo esses essenciais para tomada de decisões, tal como melhor forma de alocação de recursos. Além de contribuir com modelos específicos para previsões nas mais diversas situações de sua empregabilidade.
+
+    A estatística também pode ser uma ferramenta poderosa para melhora da qualidade do ensino, numerosas são suas possíveis aplicações, como exemplo temos a avaliação do desempenho dos alunos, utilizando métodos estatísticos podemos analisar os resultados de avaliações e testes dos alunos, nos permitindo identificar áreas de dificuldade e adaptar o ensino para atender às necessidades individuais dos alunos. Além disso, a análise dos resultados pode ajudar a identificar padrões e tendências que podem orientar a tomada de decisões pedagógicas.
+
+    Concluindo temos que a estatística é uma ferramenta essencial tanto para o avanço do desenvolvimento sustentável quanto para uma melhor qualidade de ensino.
+
+
+    \end{multicols}
+
+\end{document}
