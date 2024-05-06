@@ -1,0 +1,286 @@
+---
+title: ""
+author: ""
+date: ""
+output:
+  bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz]
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+```{r, echo=FALSE}
+#install.packages("pdftools")
+```
+
+
+
+# Experimento - Passeio Aleatória 
+***
+
+```{r, echo=FALSE, fig.align='center', fig.cap = 'O andar de um bebado é usado como alegoria para representar a ideia de uma caminhada aleatoria.', out.width="45%"}
+knitr::include_graphics("imagens/drunker.jpg")
+```
+
+## Objetivo
+
+***
+
+Introduzir os visitantes da mostra a idéia de caminhada aleatória e estimular o pensamento probabilistico dos mesmos.
+
+## Descrição
+
+***
+
+Suponha que o movimento de um certo ponto no plano pode ser descrito da seguinte maneira.
+
+Uma moeda honesta é lançada, caso dê cara o ponto avança em diagonal para a direita, caso dê coroa ela avança em diagonal para a esquerda, onde cada lançamento pode ser considerado um "passo".
+
+```{tikz, tikz-e1, fig.align='center', fig.cap = "", fig.ext = 'png', cache=TRUE, echo=FALSE, out.width="45%"}
+
+\begin{tikzpicture}
+
+\draw[step=1.0,black!50, thick] (-5,-1) grid (5,5);
+
+\filldraw [red] (0,4) circle [radius=4pt];
+\draw [] (0,4) circle [radius=4pt];
+
+\draw [->, line width=0.5mm, black!30] (-0.2,3.8) -- (-0.8,3.2);
+
+\filldraw [red!35] (-1,3) circle [radius=4pt];
+
+\draw [black!35] (-1,3) circle [radius=4pt];
+
+\draw [->, line width=0.5mm, black!30] (0.2,3.8) -- (0.8,3.2);
+
+\filldraw [red!35] (1,3) circle [radius=4pt];
+
+\draw [black!35] (1,3) circle [radius=4pt];
+
+%\draw (-5.5,-1.5) node {\Large 0};
+%\draw (-4,-1.5) node {\Large 1};
+%\draw (-3,-1.5) node {\Large 2};
+%\draw (-2,-1.5) node {\Large 3};
+%\draw (-1,-1.5) node {\Large 4};
+%\draw (0,-1.5) node {\Large 5};
+%\draw (1,-1.5) node {\Large 6};
+%\draw (2,-1.5) node {\Large 7};
+%\draw (3,-1.5) node {\Large 8};
+%\draw (4,-1.5) node {\Large 9};
+%\draw (5,-1.5) node {\Large 10};
+
+%\draw (-5.5,0) node {\Large 1};
+%\draw (-5.5,1) node {\Large 2};
+%\draw (-5.5,2) node {\Large 3};
+%\draw (-5.5,3) node {\Large 4};
+%\draw (-5.5,4) node {\Large 5};
+%\draw (-5.5,5) node {\Large 6};
+
+
+\end{tikzpicture}
+```
+
+Sabendo disso qual será a posição final desse ponto após 4 passos ?
+
+```{tikz, tikz-e2, fig.align='center', fig.cap = "", fig.ext = 'png', cache=TRUE, echo=FALSE, out.width="45%"}
+
+\begin{tikzpicture}
+
+\draw[step=1.0,black!50,thick] (-5,-1) grid (5,5);
+
+\filldraw [red] (0,4) circle [radius=4pt];
+\draw [] (0,4) circle [radius=4pt];
+
+\filldraw [red!35] (1,3) circle [radius=4pt];
+\filldraw [red!35] (-1,3) circle [radius=4pt];
+
+\draw [black!35] (1,3) circle [radius=4pt];
+\draw [black!35] (-1,3) circle [radius=4pt];
+
+\filldraw [red!35] (2,2) circle [radius=4pt];
+\filldraw [red!35] (0,2) circle [radius=4pt];
+\filldraw [red!35] (-2,2) circle [radius=4pt];
+
+\draw [black!35] (2,2) circle [radius=4pt];
+\draw [black!35] (0,2) circle [radius=4pt];
+\draw [black!35] (-2,2) circle [radius=4pt];
+
+\filldraw [red!35] (3,1) circle [radius=4pt];
+\filldraw [red!35] (1,1) circle [radius=4pt];
+\filldraw [red!35] (-1,1) circle [radius=4pt];
+\filldraw [red!35] (-3,1) circle [radius=4pt];
+
+\draw [black!35] (3,1) circle [radius=4pt];
+\draw [black!35] (1,1) circle [radius=4pt];
+\draw [black!35] (-1,1) circle [radius=4pt];
+\draw [black!35] (-3,1) circle [radius=4pt];
+
+\filldraw [red!35] (4,0) circle [radius=4pt];
+\filldraw [red!35] (2,0) circle [radius=4pt];
+\filldraw [red!35] (0,0) circle [radius=4pt];
+\filldraw [red!35] (-2,0) circle [radius=4pt];
+\filldraw [red!35] (-4,0) circle [radius=4pt];
+
+\draw [black!35] (4,0) circle [radius=4pt];
+\draw [black!35] (2,0) circle [radius=4pt];
+\draw [black!35] (0,0) circle [radius=4pt];
+\draw [black!35] (-2,0) circle [radius=4pt];
+\draw [black!35] (-4,0) circle [radius=4pt];
+
+\draw [->, line width=0.5mm, black!30] (-0.2,3.8) -- (-0.8,3.2);
+\draw [->, line width=0.5mm, black!30] (0.2,3.8) -- (0.8,3.2);
+
+\draw [->, line width=0.5mm, black!30] (-1.2,2.8) -- (-1.8,2.2);
+\draw [->, line width=0.5mm, black!30] (-0.8,2.8) -- (-0.2,2.2);
+\draw [->, line width=0.5mm, black!30] (1.2,2.8) -- (1.8,2.2);
+\draw [->, line width=0.5mm, black!30] (0.8,2.8) -- (0.2,2.2);
+
+\draw [->, line width=0.5mm, black!30] (-1.8,1.8) -- (-1.2,1.2);
+\draw [->, line width=0.5mm, black!30] (-0.2,1.8) -- (-0.8,1.2);
+\draw [->, line width=0.5mm, black!30] (1.8,1.8) -- (1.2,1.2);
+\draw [->, line width=0.5mm, black!30] (0.2,1.8) -- (0.8,1.2);
+\draw [->, line width=0.5mm, black!30] (-2.2,1.8) -- (-2.8,1.2);
+\draw [->, line width=0.5mm, black!30] (2.2,1.8) -- (2.8,1.2);
+
+\draw [->, line width=0.5mm, black!30] (0.8,0.8) -- (0.2,0.2);
+\draw [->, line width=0.5mm, black!30] (-0.8,0.8) -- (-0.2,0.2);
+\draw [->, line width=0.5mm, black!30] (-3.2,0.8) -- (-3.8,0.2);
+\draw [->, line width=0.5mm, black!30] (3.2,0.8) -- (3.8,0.2);
+\draw [->, line width=0.5mm, black!30] (1.2,0.8) -- (1.8,0.2);
+\draw [->, line width=0.5mm, black!30] (-1.2,0.8) -- (-1.8,0.2);
+\draw [->, line width=0.5mm, black!30] (-2.8,0.8) -- (-2.2,0.2);
+\draw [->, line width=0.5mm, black!30] (2.8,0.8) -- (2.2,0.2);
+
+%\draw (-5.5,-1.5) node {\Large 0};
+%\draw (-4,-1.5) node {\Large 1};
+%\draw (-3,-1.5) node {\Large 2};
+%\draw (-2,-1.5) node {\Large 3};
+%\draw (-1,-1.5) node {\Large 4};
+%\draw (0,-1.5) node {\Large 5};
+%\draw (1,-1.5) node {\Large 6};
+%\draw (2,-1.5) node {\Large 7};
+%\draw (3,-1.5) node {\Large 8};
+%\draw (4,-1.5) node {\Large 9};
+%\draw (5,-1.5) node {\Large 10};
+
+%\draw (-5.5,0) node {\Large 1};
+%\draw (-5.5,1) node {\Large 2};
+%\draw (-5.5,2) node {\Large 3};
+%\draw (-5.5,3) node {\Large 4};
+%\draw (-5.5,4) node {\Large 5};
+%\draw (-5.5,5) node {\Large 6};
+
+
+\end{tikzpicture}
+```
+
+
+## Construção
+
+***
+
+Para esse experimento são necessarios:
+
+1. Um "marcador de posição", item qualquer que possa ser utilizado para marcar a posição atual.
+2. O desenho de uma malha quadriculada ou para ser mais intuitivo somente o desenho dos caminhos possiveis.
+3. Uma moeda honesta.
+
+
+## Execução
+
+***
+
+Uma sugestão de passo a passo é:
+
+1. Perguntar ao participante em qual das possiveis posições finais o marcador irá terminar.
+
+2. Em seguida posicionar o marcador na origem e lançar a moeda.
+
+3. Dependendo do resultado o marcado será movido para uma das proximas possições.
+
+4. Assim sucessivamente até a moeda ter sido lançada quatro vezes.
+
+5. Ao final é explicada a ideia por traz do experimento e a teoria, por exemplo o porque da moeda acabar mais nas posições centrais do que nas bordas.
+
+
+## Teoria
+
+***
+
+### Resultado Intuitivo
+
+Denotando as cinco últimas posições como 1,2,3,4,5 vindo da esquerda para a direta e utilizando a notação ${\scriptstyle C}$ para cara e ${\scriptstyle \bar{C}}$ para coroa.
+
+Observe que, para o ponto terminar na posição 1, é necessário que ocorra uma sequência de 4 coroas consecutivas, ou seja, o resultado ${ \scriptstyle \bar{C}\bar{C}\bar{C}\bar{C}}$. Da mesma forma, para o ponto terminar na posição 5, é necessário que ocorra o resultado $\scriptstyle CCCC$.
+
+Generalizando essa ideia, temos:
+
+- Resultados que te levam a posição 1: ${\scriptstyle \bar{C}\bar{C}\bar{C}\bar{C}}$. 
+
+- Resultados que te levam a posição 2: $\scriptstyle C\bar{C}\bar{C}\bar{C}$, $\scriptstyle \bar{C}C\bar{C}\bar{C}$, $\scriptstyle \bar{C}\bar{C}C\bar{C}$ e $\scriptstyle \bar{C}\bar{C}\bar{C}C$.
+
+- Resultados que te levam a posição 3: $\scriptstyle \bar{C}\bar{C}CC$, $\scriptstyle \bar{C}C\bar{C}C$, $\scriptstyle \bar{C}CC\bar{C}$, $\scriptstyle CC\bar{C}\bar{C}$, $\scriptstyle C\bar{C}C\bar{C}$ e $\scriptstyle C\bar{C}\bar{C}C$.
+
+- Resultados que te levam a posição 4: $\scriptstyle \bar{C}CCC$, $\scriptstyle C\bar{C}CC$, $\scriptstyle CC\bar{C}C$ e $\scriptstyle CCC\bar{C}$.
+
+- Resultados que te levam a posição 5: $\scriptstyle CCCC$.
+
+Aqui estão todos os 16 possíveis resultados ao lançar uma moeda quatro vezes. Como a moeda é justa, todos esses resultados são igualmente prováveis. 
+
+Considere o evento "moeda terminar na posição $\scriptstyle X$" que será denotado por $\scriptstyle PX$.
+
+Calculando as probabilidades, temos:
+
+$\scriptstyle P(\text{P1}) = P(\bar{C}\bar{C}\bar{C}\bar{C}) = (1/2)^4 = 1/16$
+
+$\scriptstyle P(\text{P2}) = P(C\bar{C}\bar{C}\bar{C} \ \cup \ \bar{C}C\bar{C}\bar{C} \ \cup \ \bar{C}\bar{C}C\bar{C} \ \cup \ \bar{C}\bar{C}\bar{C}C) = 4 \times (1/2)^4  = 4/16$
+
+$\scriptstyle P(\text{P3}) = P(\bar{C}\bar{C}CC \ \cup \ \bar{C}C\bar{C}C \ \cup \ \bar{C}CC\bar{C} \ \cup \ CC\bar{C}\bar{C} \ \cup \ C\bar{C}C\bar{C} \ \cup \ C\bar{C}\bar{C}C) = 6 \times (1/2)^4  = 6/16$
+
+$\scriptstyle P(\text{P4}) = P(\bar{C}CCC \ \cup \ C\bar{C}CC \ \cup \ CC\bar{C}C \ \cup \ CCC\bar{C}) = 4 \times (1/2)^4  = 4/16$
+
+$\scriptstyle P(\text{P5}) = P(CCCC) = (1/2)^4 = 1/16$
+
+Logo é evidente ao observarmos a distribuição das probabilidades que realmente a probabilidade do ponto terminar nas posições centrais é maior.
+
+### Distribuição binomial 
+
+Como a moeda é honesta temos que os possíveis movimentos com mesmo número de passos são equiprováveis, logo o que vai determinar a probabilidade do ponto terminar em certa posição final vai ser as dado pelas diferentes formas que ele tem para chegar lá vezes $1/2^n$ onde $n$ é o número de passos.
+
+O número de formas que o ponto pode chegar na k-ésima posição final, $0 \leq k \leq n$, após n passos é dada pelo coeficiente binomial $n \choose k$.
+
+Logo a probabilidade de apos n passos o ponto termine na posição k é dada por
+
+$$P(k,n) = {n \choose k} \frac{1}{2^n} \ , \ 0 \leq k \leq n$$
+
+Que é o formato de uma distribuição binomial com parâmetros $(n, p = 1/2)$, logo podemos concluir que com um n grande a distribuição de probabilidades das posições finais se assemelham com uma distribuição normal centrada no valor $n/2$.
+
+Logo o ponto possui maior probabilidade de visitar as posições centrais do que visitar as posições nos extremos.
+
+> É importante ressaltar que qualquer adição ou mudança na explicação da teoria para torná-la mais clara e acessível aos participantes é bem-vinda. Diversos são os visitantes da mostra e a explicação que é óbvia para alguns pode ser confusa para outros.
+
+## Aplicação prática
+***
+
+A teoria da caminhada aleatória é uma ferramenta matemática amplamente empregada em diversas áreas para modelar processos estocásticos ou sistemas nos quais a mudança de estado é governada por aleatoriedade.
+
+Na física, por exemplo, temos o conceito de movimento browniano. Em resumo, o movimento browniano descreve o movimento aleatório de uma partícula suspensa em algum tipo de fluido. Nesse contexto, a partícula realiza uma caminhada aleatória tridimensional, sendo influenciada por colisões e interações imprevisíveis com as moléculas do fluido circundante.
+
+
+## Referências e leituras complementares
+
+**Paul Meyer**. Probabilidade - Aplicações à Estatística, 2ª ed. capítulo 12.3. "Aproximação Normal da Distribuição 
+Binomial".
+
+**Weisstein, Eric W**. "Random Walk--1-Dimensional.", disponível em: <https://mathworld.wolfram.com/RandomWalk1-Dimensional.html>
+
+**Michael Fowler**. "The One-Dimensional Random Walk", disponível em: <https://galileo.phys.virginia.edu/classes/152.mf1i.spring02/RandomWalk.htm>
+
+  

@@ -1,0 +1,116 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz,]
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+
+# Quão previsivel você é?
+***
+
+```{r, echo=FALSE, fig.align='center', fig.cap = 'Será que o posicionamento de um produto pode influenciar o consumidor?', out.width="55%"}
+knitr::include_graphics("imagens/central.png")
+```
+
+## Objetivo
+
+Introduzir os visitantes da mostra ao conceito de efeito do palco central, como ele é utilizado e como podemos representá-lo de forma probabilística.
+
+## Construção
+
+São necessários para a execução desse experimento:
+
+1. Um dado
+
+2. Papel e caneta para anotar os resultados. Após um número significativo de repetições, esses dados se tornaram um registro das probabilidades empíricas associadas ao experimento.
+
+## Execução
+
+Primeiramente pergunta-se ao visitante qual é o valor que ele acredita que vai sair quando o dado for lançado. Logo após o palpite ser anotado, o dado é lançado e seu resultado também é anotado. Por fim, a teoria por trás do experimento deve ser explicada.
+
+Vale ressaltar que ocultar os palpites anteriores é uma boa prática para evitar influenciar o participante.
+
+
+## Teoria
+
+### O efeito do palco central
+
+O efeito do palco central, *center stage effect* em inglês, descreve a tendência das pessoas em escolher opções que se localizam no meio dentre um conjunto de possíveis escolhas. 
+
+Num dos primeiros estudos a documentar este fenómeno, pediu-se às pessoas que escolhessem um número entre 1 e 12. 58,9% dos participantes escolheram os números 5, 6, 7 e 8, o que representa 33% das escolhas possíveis. O efeito foi ainda mais nítido quando foi oferecido aos participantes um prêmio em dinheiro por palpites corretos: 76% escolheram um dos quatro números do meio.
+
+
+```{r, echo=FALSE, fig.align='center', fig.cap = 'K. Teigen (1983).', out.width="45%"}
+knitr::include_graphics("imagens/1983.png")
+```
+
+
+### Distribuições de probabilidade
+
+
+```{r, echo=FALSE, fig.align='center', fig.cap = '', out.width="50%", echo=FALSE}
+dice = c(1:6)
+S = sample(dice, 10000, replace=T)
+S1 = sample(dice, 10000, replace=T, prob = c(0.5/6, 1.25/6, 2.25/6, 2.25/6, 1.25/6, 0.5/6 ))
+A = as.vector(table(S))/10000
+A1 = as.vector(table(S1))/10000
+
+par(mfrow = c(1,2))
+
+barplot(height = A, names = c("1","2","3","4","5","6"), main = "(a)")
+barplot(height = A1, names = c("1","2","3","4","5","6"), main = "(b)")
+
+```
+
+Como o dado é honesto, toda face tem a mesma probabilidade de sair após um lançamento. Portanto, é natural assumir que, na hora da escolha, nenhuma face seja favorecida em relação às outras. Assumindo isso como verdade, podemos dizer que a probabilidade de escolha é igual para todas as faces. O gráfico de frequência relativa para essa distribuição é composto por barras de pesos parecidos, representado pelo exemplo (a).
+
+Porém, na prática, não é isso que acontece. Os valores centrais 3 e 4 são escolhidos com uma frequência maior em comparação aos valores das extremidades 5 e 6. O gráfico de frequência resultante dessa distribuição tem um formato de sino, com os valores centrais mais "pesados" e as extremidades mais "leves", representado pelo exemplo (b).
+
+> É importante ressaltar que qualquer adição ou mudança na explicação da teoria para torná-la mais clara e acessível aos participantes é bem-vinda. Diversos são os visitantes da mostra e a explicação que é óbvia para alguns pode ser confusa para outros.
+
+
+## Aplicação prática
+***
+
+Empresas, por exemplo, utilizam o fenômeno do palco central para "influenciar" seus consumidores a optarem por determinado item, empregando estratégias que colocam em destaque o produto desejado. Ao direcionar a atenção do consumidor para um produto específico, as empresas buscam criar uma percepção de importância e superioridade em relação às alternativas disponíveis.
+
+```{r, echo=FALSE, fig.align='center', fig.cap = 'Exemplo de propaganda', out.width="45%"}
+knitr::include_graphics("imagens/freshbooks.webp")
+```
+
+
+## Referências e leituras complementares 
+
+**Paul Meyer**. Probabilidade - Aplicações à Estatística, 2ª ed. capítulos 4.7. “Variáveis Aleatórias Uniformemente Distribuídas" e 4.3.  “A Distribuição Binomial".
+
+**Kent Hendricks**. "The center stage effect: this is why you choose the product in the middle (even if it’s bad)", disponível em:
+<https://kenthendricks.com/center-stage-effect/>
+
+
+Figure 1.1 - Disponível em <https://cognitivebias.io/bias/center-stage-effect>
+
+Figure 1.2, Figure 1.3 - Disponível em <https://kenthendricks.com/center-stage-effect/>
+
+
+
+
+
+
+
+
+
+
+
+
+

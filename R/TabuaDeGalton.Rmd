@@ -1,0 +1,119 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz,]
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+# Tábua de Galton 
+***
+
+
+## Objetivo
+***
+
+O experimento tem por objetivo fornecer aos participantes uma compreensão prática de como os princípios da probabilidade e da distribuição normal se manifestam no mundo material. A partir de introdução à funcionalidade do equipamento, espera-se que os participantes apresentem suas hipóteses sobre o comportamento das "bolinhas" após serem lançadas para dentro do tabuleiro. 
+
+<br>
+
+```{r fluxo, out.width="45%", include=TRUE, fig.align="center", echo=FALSE, fig.cap="Ilustração do funcionanmento do tabuleiro"}
+knitr::include_graphics("imagens/gb.jpg")
+```
+
+## Descrição
+***
+
+**Visão geral do equipamento:**
+
+```{r fluxo2, out.width="30%", include=TRUE, fig.align="center", echo=FALSE, fig.cap="Representação do tabuleiro"}
+knitr::include_graphics("imagens/gb2.jpeg")
+```
+
+
+O tabuleiro é uma estrutura vertical, geralmente de madeira, com um tampo de acrílico, que permita a visualização de seu interior, composta por:
+
+* Uma entrada no topo, por onde as bolinhas de gude são introduzidas. Deve ficar exatamente no centro do tabuleiro e ter largura compatível com o diâmetro das bolinhas;
+* Fileiras verticais de pinos (ou pregos) que se dispõe em formato de pirâmide entre a entrada e a base, de forma que, a cada pino com que colidem, as bolinhas tenham probabilidade igual de irem para um ou outro lado;
+* Canaletas na base, que armazenarão as bolinhas após estas percorrerem todo o "caminho" dos pinos. Estas canaletas devem ser compatíveis com o diâmetro das bolinhas, de modo que elas fiquem sobrepostas ao serem armazenadas.
+        
+**Número de participantes:**
+    
+Não há limite para o número de participantes. Apesar da dinâmica do lançamento das "bolinhas" poder contar com a interação esporádica de algum espectador, ela pode ser feita integralmente pelo monitor.
+
+## Construção/Recursos necessários
+
+***
+
+* O tabuleiro específico;
+* Uma quantidade significativa de bolinhas de gude. A quantidade varia de acordo com o tamanho do tabuleiro, já que é necessário o suficiente para que sua distribuição pelas bandejas inferiores aproxime-se da silhueta da curva normal, mas de forma que não transborde as bandejas.  
+
+
+## Execução
+
+***
+
+* Apresentar muito brevemente o experimento, sem rigor teórico. Dizer o nome e explicar a mecânica envolvida: soltar as bolinhas de gude no topo do tabuleiro, esperar que elas caiam por entre os pregos e se aloquem nas canaletas inferiores.
+* Preparar-se para soltar uma bolinha. Então, incitar os participantes a levantar hipóteses sobre seu comportamento: Em qual bandeja ela cairá? Há alguma explicação para isso? Fazer provocações gerais a respeito das hipóteses dos expectadores. E então, soltá-la.
+* Ao ver o resultado da primeira bolinha, confrontar as hipóteses apresentadas. O comportamento será semelhante para uma segunda bolinha? E terceira? E para todas? Então, após ouvir novamente as hipóteses, soltar as bolinhas restantes.
+* Observado o resultado empírico, confrontar as hipóteses apresentadas e apresentar o conceito teórico que baliza o experimento.
+
+
+## Teoria
+
+***
+
+### Distribuição binomial
+
+Supondo verdadeira a hipótese de que a construção da tábua não apresenta imperfeições que possam enviesar o experimento (assimetria na disposição dos pinos, alguma tortuosidade, etc...), ao atingir um pino, a esfera pode cair para a direita (do observador) com probabilidade $\frac{1}{2}$ ou para a esquerda, com também probabilidade $\frac{1}{2}$ . 
+
+Podemos representar cada colisão como sendo um ensaio independente de Bernoulli, sendo “cair para a direita” sucesso e “cair para a esquerda” fracasso (definido arbitrariamente). Apartir disso podemos definir a variavel aleatoria $\scriptstyle B$: "esfera caiu para a direita" que assume os valores 1, "sucesso", ou 0, "fracasso", com igual probabilidade.
+
+Seja $\scriptstyle n$ a quantidade de fileiras horizontais de pinos até que as esferas atinjam as canaletas, com isso, cada esfera vai passar por exatamente $\scriptstyle n$ colissoes até atingir uma canaleta.
+
+Logo o caminho percorrido por cada bolinha pode ser representado por uma sequencia de variaveis aleatorias $\scriptstyle B_1, B_2,\dots,B_n$.
+
+Agora a variável aleatória $\scriptstyle W$: "quantidade de vezes que a esfera caiu para a direita" pode ser representada como $\scriptstyle W = B_1 +  B_2 + \dots + B_n$. Logo, temos que $\scriptstyle W$ têm distribuição binomial com parametros $\scriptstyle n$ e $\frac{1}{2}$.
+
+$$P(W=w) = { n\choose w} \bigg(\frac{1}{2}\bigg)^w\bigg(\frac{1}{2}\bigg)^{n-w} = { n\choose k}\bigg(\frac{1}{2}\bigg)^w, \quad w=0, 1, ..., n.$$
+Onde o valor $\scriptstyle P(W = w)$ representa a probabilidade da bolinha cair para a direita $\scriptstyle w$ vezes das $\scriptstyle n$ oportunidades.
+
+```{r fluxos, out.width="45%", include=TRUE, fig.align="center", echo=FALSE, fig.cap="Representação gráfica do funcionamento do tabuleiro."}
+knitr::include_graphics("imagens/pascal.jpg")
+```
+
+### Relação com o Teorema do Limite Central
+
+> Essa seção envolve conceitos mais avançados de probabilidade.
+
+O estatístico Francis Galton criou o tabuleiro com o intuito de demonstrar o teorema do limite central, teorema esse que é considerado um dos resultados mais importantes na área de estatística.
+
+Admita a seguinde a versão do teorema:
+
+Dada uma sequencia de variaveis aleatorias $X_i$, independentes e identicamente distribuidas com média $\mu$ e variancia finita $\sigma^2$. Temos que quando $n \to \infty$ distribuição da soma das variaveis $S_n = X_1 + X_2 + \dots + X_n$ é normal com média $n\mu$ e variancia $n\sigma^2$. Logo, temos que quando somamos uma grande quantidade de observações de uma mesma variavel essa soma vai se ter uma distribuição normal.
+
+Como podemos modelar a posição final da bola como uma soma de Bernoulli's
+
+
+## Referências e leituras complementares
+
+**Alexander Galea**. "GALTON’S PEG BOARD AND THE CENTRAL LIMIT THEOREM", disponível em: 
+<https://galeascience.wordpress.com/2016/03/11/galtons-peg-board-and-the-central-limit-theorem/>
+
+
+**Hossein Pishro-Nik**. "Central Limit Theorem", disponível em:
+<https://www.probabilitycourse.com/chapter7/7_1_2_central_limit_theorem.php>
+
+Figure 1.1 - Disponivel em: <https://www.alanzucconi.com/2015/09/09/understanding-the-gaussian-distribution/galton-board/>
+
+Figure 1.2 - Disponivel em: <https://physlab.org/class-demo/galton-board/>
+

@@ -1,0 +1,118 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz,]
+header-includes:
+- \usepackage{caption}
+- \captionsetup[figure]{labelformat=empty}
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+# O problema das três cartas
+***
+
+## Objetivo
+***
+
+Apresentar aos visitantes da mostra o problema das três cartas e por via dele estimular o pensamento probabilístico dos mesmos.
+
+## Descrição
+***
+
+O problema das três cartas é o seguinte:
+
+Temos três cartas, uma com um lado vermelho e outro azul, outra com ambos os lados vermelhos e a terceira com ambos os lados azuis.
+
+Imagine que, de maneira aleatória, uma carta foi escolhida e colocada sobre a mesa, sendo que só temos conhecimento da face que está visível.
+
+Dado que a face visível é vermelha, ao tentar adivinhar a cor da face oposta, qual das opções é mais provável: que a face também seja vermelha, ou que a face seja azul?
+
+## Itens necessários
+***
+
+Para a realização desse experimento são necessários os seguintes itens:
+
+
+* Três cartas: Uma com ambos os lados vermelhos, uma com ambos os lados azuis e outra com um lado vermelho e outro lado azul. (As cores são arbitrárias)
+
+> Também é possível empregar uma tabela, na qual os resultados são registrados ao término do experimento. Após um número significativo de repetições, a tabela se tornará um registro das probabilidades empíricas associadas ao experimento.
+
+
+## Execução
+***
+
+Com as cartas em posse, pode-se seguir o seguinte roteiro:
+
+1. Primeiramente, apresentam-se as cartas e suas faces ao participante do experimento. 
+
+2. Uma carta é selecionada aleatoriamente e colocada sobre a mesa sem que o participante a veja.
+
+3. Com a carta postada a mesa e o participante ciente da cor de sua face superior, pergunta-se "Qual é a cor da face oposta?".
+
+4. Após o participante responder, pode-se continuar com "Saber a cor da face superior pode te ajudar de alguma forma a aumentar sua chance de acertar?".
+
+5. Por fim, a teoria é apresentada de maneira simples e clara para o participante.
+
+O número de participantes é flexível, pois a interação de cada um ocorre por meio de palpites e comentários, possibilitando a participação simultânea de vários participantes.
+
+## Teoria
+***
+
+### Modelagem matemática e eventos condicionados
+
+Definindo que, cada uma das três cartas possui dois lados, A e B, temos
+
+```{r d1, include=TRUE, fig.align="center", echo=FALSE, fig.cap=""}
+knitr::include_graphics("imagens/Not-1.png")
+```
+
+Apartir dessa definição podemos construir o seguinte modelo para o problema
+
+```{r d2, include=TRUE, fig.align="center", echo=FALSE, fig.cap=""}
+knitr::include_graphics("imagens/Res-1.png")
+```
+
+Onde a observação de cada uma das possiveis faces é equiprovavel, ou seja, cada face tem mesma chance de observação, logo quando a face visivel for vermelha a probabilidade da face oposta tambem ser vermelha é de 2/3.
+
+> Uma outra forma de verificar esse resultado é utilizando o teorema de Bayes.
+
+É interessante notar que, se a face superior fosse desconhecida, a probabilidade da face oposta ser vermelha seria de 1/2.
+
+Sabendo dessas informações, temos que o evento aleatório *'cor da face oposta'* é condicionado ao evento aleatório *'cor da face observada'*, ou seja, a probabilidade de *'cor da face oposta = vermelho'* muda dependendo do resultado de *'cor da face observada'*. 
+
+> É importante ressaltar que qualquer adição ou mudança na explicação da teoria para torná-la mais clara e acessível aos participantes é bem-vinda. Diversos são os visitantes da mostra e a explicação que é óbvia para alguns pode ser confusa para outros.
+
+## Aplicação prática
+***
+
+A noção de probabilidade condicional explorada nesse experimento é uma ferramenta crucial para diversos modelos probabilísticos. É comum que um evento aleatório esteja vinculado a um acontecimento prévio, onde o comportamento probabilístico desse evento muda dependendo do resultado desse acontecimento prévio. 
+
+**Como exemplo:**
+
+Suponha que a probabilidade de ocorrerem acidentes em uma determinada via seja um evento aleatório condicionado ao dia da semana. Foi observado que nos dias de segunda e sexta a probabilidade de acidentes é significativamente maior do que nos outros dias da semana, nesse caso seria sensato reforçar a vigilância nessa via especificamente durante esses dias. Assim, ajustando as ações de monitoramento de acordo com a variação das probabilidades, otimizando a segurança com base nos padrões identificados.
+
+## Referências e leituras complementares
+***
+
+**Paul Meyer**. Probabilidade - Aplicações à Estatística, 2ª ed. capítulo 3.1. "Probabilidade Condicionada".
+
+**Presh Talwalkar**. "The 3 Card Riddle", disponível em:
+
+<https://mindyourdecisions.com/blog/2016/06/19/the-3-card-riddle-sunday-puzzle/>
+
+**Michael Franke**. "Probabilities & Bayes rule (in WebPPL)", disponível em:
+
+<https://michael-franke.github.io/probLang/chapters/app-01-probability.html>
+
+
+

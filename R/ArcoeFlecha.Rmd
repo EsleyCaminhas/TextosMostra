@@ -1,0 +1,90 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz,]
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+# Sou bom no arco e flecha?
+***
+
+Podemos representar a tentativa de estimação de um certo valor como a tentativa de acerta o centro de um alvo. 
+
+```{r, echo=FALSE, out.width="15%", fig.cap="", fig.show='hold', fig.align='center', eval=TRUE}
+knitr::include_graphics(c("imagens/gg.jpg"))
+```
+
+## Objetivo
+***
+
+O objetivo deste experimento é proporcionar, através da ilustração da flecha que atinge o alvo, uma noção elementar e concreta dos conceitos estatísticos "viés", "precisão" e "acurácia".
+
+
+## Descrição
+***
+
+**Recursos necessários:**
+
+* Um arco;
+* Algumas flechas (preferencialmente de pressão, para segurança e melhor conservação, uma vez que estas podem ser reutilizadas inúmeras vezes);
+* Um alvo, de material adequado para as flechas de pressão.
+  
+
+**Número de participantes:**
+
+* O experimento deve ser executado individualmente, mesmo que outras pessoas possam assistir aos tiros do participante e à explicação do monitor. Isso porque é importante, para a explicação dos conceitos, que todos os tiros executados partam de um mesmo participante.
+
+
+
+## Execução
+
+***
+
+```{r, echo=FALSE, out.width="30%", fig.cap="Conjunto com arco e flechas profissional", fig.show='hold', fig.align='center', eval=TRUE}
+knitr::include_graphics(c("imagens/arco.png"))
+```
+
+O monitor dá as instruções gerais para o participante, sobre o manuseio do arco, a distância correta que o participante deve manter em relação ao alvo, e como executar o tiro. Feito isso, o participante recebe algumas flechas e então atira-as, uma a uma, ao alvo. Após terminados os tiros, o monitor comenta brevemente seu resultado, com base nos conceitos de precisão, acurácia e viés, apresentando-os, então, ao participante.
+
+
+## Teoria
+
+***
+
+**Acurácia:**
+
+Acurácia se refere à proximidade dos resultados obtidos com o verdadeiro valor ou objetivo que se tem como referência. No experimento do arco e flecha, a acurácia é medida pela frequência com que as flechas atingem o centro do alvo. Quanto mais próximas elas estiverem do centro, maior a acurácia. Na estatística, a acurácia avalia a correção dos resultados em relação ao valor real, indicando o grau de confiabilidade das medições.
+
+**Precisão:**
+
+A precisão diz respeito à consistência e reprodutibilidade dos resultados, independentemente da proximidade com o valor verdadeiro. No contexto do arco e flecha, a precisão seria avaliada pela distribuição das flechas em torno do centro do alvo. Se as flechas estiverem agrupadas de maneira coesa, mesmo que não atinjam o centro, isso indica uma precisão alta. No âmbito estatístico, a precisão considera a dispersão dos resultados em torno da média, indicando quão confiavelmente as medições podem ser reproduzidas.
+
+**Viés:**
+
+O viés refere-se a um desvio sistemático entre os resultados observados e o valor verdadeiro ou objetivo. Para o experimento em questão, o viés é comparável a uma tendência de um usuário lançar flechas que atingam uma área específica do alvo, que não o centro. Essa tendência pode ser causada por fatores como ajustes inadequados no arco, erros de mira ou até mesmo alguma interferência física (como o vento, em eventos ao ar livre). Para a Estatística, o viés indica um erro constante que afeta os resultados, podendo distorcê-los de maneira consistente em relação à média. 
+
+Abaixo podemos ver visualmente diferentes comportamentos para as flechas no alvo, que apontam para 4 cenários distintos:
+
+```{r, echo=FALSE, out.width="50%", fig.cap="Quatro possiveis cenários", fig.show='hold', fig.align='center', eval=TRUE}
+knitr::include_graphics(c("imagens/estimadores.png"))
+```
+
+* Caso 1: Alta precisão, alta acurácia, sem viés. Os pontos concentram-se em sua totalidade próximos ao centro, sem nenhuma tendência aparente, nem algum caso discrepante.
+    
+* Caso 2: Alta precisão, baixa acurácia, com viés. Os pontos estão agrupados, mas fora do centro e com uma tendência para o canto inferior à direita do jogador.
+
+* Caso 3: Baixa precisão, baixa acurácia, sem viés. Apesar de não haver tendência a nenhum dos cantos específicos do alvo, os pontos estão muito dispersos e não estão concentrados em relação ao centro.
+    
+* Caso 4: Baixa precisão, baixa acurácia, com viés. Os pontos estão dispersos, e há uma clara tendência ao canto superior à esquerda do observador.
+
+## Referências e leituras complementares

@@ -1,0 +1,175 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz,]
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+# Pesquisa eleitoral 
+
+## Objetivo
+
+Introduzir os visitantes da mostra a idéia de estimação de proporções via amostragem e como ela é utilizadas no nosso dia a dia.
+
+```{r, echo=FALSE, out.width="30%", fig.cap="Imagens do experimento", fig.show='hold', fig.align='center', eval=TRUE}
+knitr::include_graphics(c("imagens/tabua.jpg","imagens/tabua2.jpg"))
+```
+
+## Descrição{#desc}
+
+Temos uma caixa fechada com 200 bolas, é dito que as bolas podem ser brancas ou vermelhas porem a proporção é desconhecida, assuma que seu desafio seja descobrir qual é a proporção de bolas vermelhas na caixa, duas opções são te ofericidas retirar 12 ou 60 bolas, qual das opções você escolheria?
+
+
+## Construção
+
+Para a costrução desse experimento é altamente recomendado o envolvimento de uma marceneiro pois o mesmo tera ferramentas que facilitaram o processo.
+
+Basicamente é necessário uma caixa de madeira que será fixada a um apoio de tal forma que ela possa ser inclinada, sendo a mesma dividida em duas seções cada uma com 200 bolinhas, 150 vermelhas e 50 brancas, com uma seção tendo 12 concavidades, lugar onde as bolinhas vão se alocar quando a caixa for inclinada, e outra tendo 60, pôr fim a caixa será fechada por um pedaço retangular de plástico transparente com o intuito de evitar que as bolinhas caiam ainda possibilitando a visualização do que acontece dentro da mesma. 
+
+## Execução
+
+Podemos começar indagando os visitantes da mostra com uma questão semelhante a descrita na seção \@ref(desc), em seguida inclinamos a caixa algumas vezes (retiramos algumas amostras) e mostramos que o lado com a amostra de tamanho 60 estima a proporção de forma mais precisa que o lado com a amostra de tamanho 12.
+
+## Teoria
+
+### Explicação intuitiva 
+
+Neste experimento, temos que, em média, o lado com a amostra de tamanho 60 será um melhor representante da população do que a amostra de tamanho 12, ou seja, em média, a proporção de bolas vermelhas na amostra de tamanho 60 estará mais próxima da proporção populacional de bolas vermelhas, que é 0.75, do que a amostra de tamanho 12.
+
+Por exemplo, a chance de termos uma amostra com somente bolas vermelhas é maior na amostra de tamanho 12 do que na amostra de tamanho 60. Nesse caso, pode-se dizer que a amostra de tamanho 60 é mais "confiável".
+
+Mesmo sabendo que, probabilisticamente, um lado tem maior chance de representar melhor a população, ainda assim, pelo comportamento incerto do experimento, existe a chance da amostra de tamanho 12 apresentar uma melhor aproximação para a proporção populacional que a amostra de tamanho 60. Nesse caso, recomenda-se retirar novas amostras. 
+
+> É importante ressaltar que qualquer adição ou mudança na explicação da teoria para torná-la mais clara e acessível aos participantes é bem-vinda. Diversos são os visitantes da mostra e a explicação que é óbvia para alguns pode ser confusa para outros.
+
+### Plano amostral e estimação de proporção 
+
+```{tikz Esquema, label='Esquema', fig.align='center', fig.cap = "Processo de amostragem e inferência.", fig.ext = 'png', cache=TRUE, echo=FALSE, out.width="65%"}
+\begin{tikzpicture}
+
+\filldraw[fill=blue!20!white, draw=blue!20!white] (0,0) rectangle (5,5);
+
+\draw (2.5, 2.5) node {População};
+
+
+\draw (6.5, 3) node {Amostragem};
+\draw [->, line width=1pt] (6,2.5) -- (7,2.5); 
+
+\filldraw[fill=blue!20!white, draw=blue!20!white] (9,2) -- (11,2) -- (11,0) -- (14,0) -- (14,5) -- (9,5) -- (9,2);
+
+\filldraw[fill=blue!20!white, draw=blue!20!white] (8,-1) rectangle (10,1);
+
+\draw (9,0) node {Amostra};
+
+\draw [->, line width=1pt] (9,-1.5) -- (9,-2.5);
+
+\filldraw[fill=green!20!white, draw=green!20!white] (9,-4) circle (1);
+
+\node[align=center] at (9,-4) {Dados\\amostra};
+
+
+\draw (6.5, -3.5) node {Inferência};
+\draw [->, line width=1pt] (7,-4) -- (6,-4);
+
+\filldraw[fill=green!20!white, draw=green!20!white] (2.5,-4) circle (2.5);
+
+\node[align=center] at (2.5,-4) {Dados\\população};
+
+\end{tikzpicture}
+```
+
+O plano amostral determina o conjunto de regras e ações utilizadas para seleção de um elemento da população para a amostra, no plano *AASs*, *amostragem aleatória simples sem reposição*, todos os elementos da população tem mesma probabilidade de ser selecionados para amostra e cada elemento só pode ser sorteado uma vez, por isso sem reposição.
+
+Seja $S$ nossa população que é composta por 200 bolas, 150 vermelhas e 50 brancas.
+
+Suponha que a proporção de bolas vermelhas dessa população não é conhecida e desejamos estima-lá.
+
+Sejam $s_1$ e $s_2$ amostras de $S$, retiradas de maneira independente e pelo plano amostral *AASs*, com tamanhos 12 e 60 respectivamente.
+
+Denotando por $\hat{p}$ o estimador não viesado da proporção populacional no plano *AASs*, temos:
+
+\begin{equation}
+\hat{p} = \frac{m}{n} (\#eq:p)
+\end{equation}
+
+Onde $m$ é o número de elementos da amostra que possuem a característica que queremos calcular a proporção e $n$ o número total de elementos contidos na amostra.
+
+\begin{equation}
+var[ \hat{p} ] =  \biggl( \frac{1}{n} - \frac{1}{N} \biggr)\frac{N}{N-1}p(1-p) = \biggl( \frac{N-n}{n} \biggr)\frac{1}{N-1}p(1-p) (\#eq:variancep)
+\end{equation}
+
+Observando o lado esquerdo da equação \@ref(eq:variancep) podemos perceber que quanto maior for $n$ menor será a variância do estimador $\hat{p}$.
+
+
+Como $p(1-p) \neq 0$, temos:
+
+$$\frac{var[\hat{p}_{s_1}]}{var[\hat{p}_{s_2}]}= \frac{\biggl( \frac{1}{12} - \frac{1}{200} \biggr)\frac{200}{199}p(1-p)}{\biggl( \frac{1}{60} - \frac{1}{200} \biggr)\frac{200}{199}p(1-p)} \approx 6.71$$
+Logo a variância do estimador $\hat{p}$ na amostra $s_1$ é aproximadamente 6.71 vezes maior do que a variância do mesmo na amostra $s_2$.
+
+
+### Simulação no R
+
+Simulando a retirada independente seguido pelo cálculo de $\hat{p}$ para 70 amostras de tamanho 12 e 60 obtemos os seguintes gráficos. 
+
+```{r, comment=NA, label = comparacaop, fig.align='center', echo=FALSE, fig.cap="Comparação entre os valores estimados para p."}
+S = c()
+for (i in 1:150){ S = c(S, 1) }
+for (i in 1: 50){ S = c(S, 0) }
+s1_obs = c()
+s2_obs = c()
+for (i in 1:70){
+  s1_obs = c(s1_obs, sum(sample(S, 12))/12)
+  s2_obs = c(s2_obs, sum(sample(S, 60))/60)}
+
+par(mfrow = c(1,2))
+
+plot(1, type = "n", main = "Amostras de tamanho 12",xlab = "Index amostra", ylab = "Valor estimado de p",
+        xlim = c(0, 70), ylim = c(0.25, 1))
+abline(h=0.75, col = "blue")
+
+legend("bottomleft", legend=c("Real valor de p"),
+       col=c("blue"), lty=1:2)
+
+lines(s1_obs)
+
+plot(1, type = "n", main = "Amostras de tamanho 60",xlab = "Index amostra", ylab = "Valor estimado de p", 
+        xlim = c(0, 70), ylim = c(0.25, 1))
+abline(h=0.75, col = "blue")
+
+legend("bottomleft", legend=c("Real valor de p"),
+       col=c("blue"), lty=1:2)
+
+lines(s2_obs)  
+
+```
+
+Ao observar os dois gráficos da figura \@ref(fig:comparacaop) podemos perceber que os valores de $\hat{p}$ nas amostras de tamanho 12 estão em geral mais distantes do valor real de $p$ do que nas amostras de tamanho 60.
+
+## Aplicação prática
+***
+
+Durante os períodos eleitorais, é comum a realização de pesquisas de opinião pública. Nessas pesquisas, os eleitores são consultados sobre suas opiniões em determinados tópicos, como a intenção de voto.
+Nessa situação, amostras grandes são preferíveis, pois proporcionam uma maior confiança em seus resultados, enquanto amostras menores podem indicar resultados enviesados.
+
+
+## Referências e leituras complementares
+
+**Pedro Luis do Nascimento Silva, Antonio José Ribeiro Dia, Zélia Magalhães Bianchini**. "Amostragem : teoria e prática usando R", disponível em <https://amostragemcomr.github.io/livro/>
+
+**Heleno Bolfarine e Wilton O. Bussab**. "Elementos de Amostragem".
+
+
+
+
+
+

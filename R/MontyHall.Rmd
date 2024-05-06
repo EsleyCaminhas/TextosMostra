@@ -1,0 +1,343 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz,]
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+# O problema de Monty Hall
+
+Monty Hall, nome artístico de **Monte Halperin**, ficou mais conhecido por apresentar o programa de televisão estadunidense *Let's Make a Deal*, o programa tinha um formato parecido com o *Programa do Silvio Santos* onde os participantes competiam em diferentes brincadeiras com o objetivo de ganhar prêmios.
+
+
+```{r, echo=FALSE, fig.align='center', fig.cap = 'Monty Hall e uma participante no programa Let\'s make a deal', out.width="55%"}
+knitr::include_graphics("imagens/doors.jpg")
+```
+
+
+O problema foi primeiro proposto e solucionado por **Steve Selvin** em 1975, contudo ganhou maior notoriedade em 1990 após **Marilyn vos Savant** publica-lo em sua coluna na famosa revista americana *Parade*, publicação essa que criou grande controvérsia na época, desde então o problema tem sido um exemplo comum para representar o comportamento muitas vezes não intuitivo da probabilidade.
+
+## Objetivo
+***
+
+Introduzir os visitantes da mostra ao problema de Monty Hall e por meio dele estimular o pensamento probabilístico dos mesmos.
+
+
+## Descrição
+***
+
+Imagine que você esteja em um programa de televisão e tenha a opção de escolher dentre três portas: 
+Atrás de uma porta está um carro e atrás das outras cabras.
+
+Você escolhe uma porta, suponha a segunda.
+
+O apresentador, que sabe onde está o carro, então abre outra porta, suponha a terceira, que tem uma cabra. Ele então pergunta: 
+"Você quer continuar com sua primeira escolha, ou trocar de porta?".
+
+A dúvida é a seguinte, assumindo que o principal objetivo é acertar em qual porta está o carro, qual estratégia é a melhor, continuar com sua escolha inicial ou trocar de porta?
+
+## Itens necessários
+***
+
+Esse é um experimento relativamente simples de ser replicado, de forma sucinta só são necessários três itens distintos de tal forma que o "prêmio" possa ser escondido em um desses itens.
+
+No experimento atual são utilizadas três pastas coloridas coladas a uma tabua de madeira, onde as pastas fazem o papel das portas, uma folha "prêmio" é posta dentro de uma das pastas antes do experimento ser executado.
+
+## Execução
+***
+
+
+1. Enunciar a ideia básica do jogo.
+2. Perguntar em qual porta está o prêmio.
+3. Abrir uma porta que não seja a premiada. 
+4. Perguntar se o participante deseja trocar de porta.  
+5. Abrir a porta premiada. 
+Explicar a teoria da forma que julgar conveniente.
+
+## Teoria
+***
+
+### Solução intuitiva
+
+Uma forma intuitiva de solucionar esse problema é construindo o conjunto com todos os possíveis resultados do experimento.
+
+Denotando por $p_i$ o evento "porta $i$ ser a premiada" e por $P$ a probabilidade desse evento, temos:
+
+
+\begin{matrix}
+p_i & P
+\\
+1 & 1/3
+\\
+2 & 1/3
+\\
+3 & 1/3
+\end{matrix}
+
+
+Agora considerando $p_j$ como sendo o evento "porta $j$ escolhida pelo participante", dado que cada porta é escolhida com probabilidade $\frac{1}{3}$.
+
+\begin{matrix}
+p_i & p_j & P
+\\
+1 & 1 & 1/9
+\\
+1 & 2 & 1/9
+\\
+1 & 3 & 1/9
+\\
+2 & 1 & 1/9
+\\
+2 & 2 & 1/9
+\\
+2 & 3 & 1/9
+\\
+3 & 1 & 1/9
+\\
+3 & 2 & 1/9
+\\
+3 & 3 & 1/9
+\end{matrix}
+
+Por fim usando $p_k$ denotaremos o evento "porta $k$ aberta pelo apresentador", lembrando que quando $p_i = p_j$ o apresentador pode escolher abrir, com probabilidade $\frac{1}{2}$, qualquer uma das duas portas restantes pois ambas são não premiadas, porém quando $p_i \neq p_j$ o apresentador tem apenas uma opção, pois ele nunca abre a porta que contêm o prêmio, logo ele escolhe abrir com probabilidade $1$ a porta não premiada.
+
+\begin{matrix}
+
+p_i & p_j & p_k & P
+\\
+1 & 1 & 2 & 1/18
+\\
+1 & 1 & 3 & 1/18
+\\
+1 & 2 & 3 & 1/9
+\\
+1 & 3 & 2 & 1/9
+
+\\
+
+2 & 1 & 3 & 1/9
+\\
+2 & 2 & 1 & 1/18
+\\
+2 & 2 & 3 & 1/18
+\\
+2 & 3 & 1 & 1/9
+
+\\  
+
+3 & 1 & 2 & 1/9
+\\
+3 & 2 & 1 & 1/9
+\\
+3 & 3 & 2 & 1/18
+\\
+3 & 3 & 1 & 1/18
+
+\end{matrix}
+
+Esse é o conjunto de todos os resultados possíveis do experimento.
+
+Portanto para obtermos a probabilidade do evento "continuar com a primeira escolha resulta em sucesso", que denotaremos por $CS$, basta somarmos as probabilidades dos eventos tais que $p_1 = p_2$.
+
+
+\begin{matrix}
+p_i & p_j & p_k & P
+\\
+1 & 1 & 2 & 1/18
+\\
+1 & 1 & 3 & 1/18
+\\
+2 & 2 & 1 & 1/18
+\\
+2 & 2 & 3 & 1/18
+\\
+3 & 3 & 2 & 1/18
+\\
+3 & 3 & 1 & 1/18
+\end{matrix}
+
+$$P(CS) = \frac{1}{18} \times 6 = \frac{1}{3}$$
+
+De forma semelhante para obtermos a probabilidade do evento "trocar resulta em sucesso", que denotaremos por $TS$, basta somarmos as probabilidades dos eventos tais que $p_1 \neq p_2$ pois nesse caso a porta "restante" sempre será a premiada.
+
+\begin{matrix}
+p_i & p_j & p_k & P
+\\
+1 & 2 & 3 & 1/9
+\\
+1 & 3 & 2 & 1/9
+\\
+2 & 1 & 3 & 1/9
+\\
+2 & 3 & 1 & 1/9
+\\  
+3 & 1 & 2 & 1/9
+\\
+3 & 2 & 1 & 1/9
+\end{matrix}
+
+$$P(TS) = \frac{1}{9} \times 6 = \frac{2}{3}$$
+
+
+
+Podemos simplificar esse resultado na seguinte tabela:
+
+```{tikz, tikz-ex22, fig.align='center', fig.cap = "", fig.ext = 'png', cache=TRUE, echo=FALSE}
+\begin{tikzpicture}
+
+
+
+\draw [thick](-3.5,1.7) -- (8.5,1.7);
+\draw [thick](-3.5,0.7) -- (8.5,0.7);
+\draw [thick](-3.5,-2.5) -- (8.5,-2.5);
+
+\draw [thick](-0.5,1.7) -- (-0.5,-2.5);
+
+\draw [thick](-3.5,1.7) -- (-3.5,-2.5);
+
+\draw [thick](2.5,1.7) -- (2.5,-2.5);
+
+\draw [thick](5.5,1.7) -- (5.5,-2.5);
+
+\draw [thick](8.5,1.7) -- (8.5,-2.5);
+
+\node at (-2,1.2){Porta Premiada};
+\node at (-2,0){Porta Escolhida};
+
+\node at (-2,-1){Não Troca};
+\node at (-2,-2){Troca};
+
+\node at (1,1.2){$1\textsuperscript{\underline{o}}$};
+
+\node at (0,0) [circle, draw=black!50,fill=white,thick] {$1\textsuperscript{\underline{o}}$};
+\node at (1,0) [circle, draw=black!50,fill=white,thick] {$2\textsuperscript{\underline{o}}$};
+\node at (2,0) [circle, draw=black!50,fill=white,thick] {$3\textsuperscript{\underline{o}}$};
+
+\node at (0,-1) [circle, draw=black!50,fill=green!30,thick] {o};
+\node at (1,-1) [circle, draw=black!50,fill=red!30,thick] {x};
+\node at (2,-1) [circle, draw=black!50,fill=red!30,thick] {x};
+
+\node at (0,-2) [circle, draw=black!50,fill=red!30,thick] {x};
+\node at (1,-2) [circle, draw=black!50,fill=green!30,thick] {o};
+\node at (2,-2) [circle, draw=black!50,fill=green!30,thick] {o};
+
+
+\node at (4,1.2){$2\textsuperscript{\underline{o}}$};
+
+\node at (3,0) [circle, draw=black!50,fill=white,thick] {$1\textsuperscript{\underline{o}}$};
+\node at (4,0) [circle, draw=black!50,fill=white,thick] {$2\textsuperscript{\underline{o}}$};
+\node at (5,0) [circle, draw=black!50,fill=white,thick] {$3\textsuperscript{\underline{o}}$};
+
+\node at (3,-1) [circle, draw=black!50,fill=red!30,thick] {x};
+\node at (4,-1) [circle, draw=black!50,fill=green!30,thick] {o};
+\node at (5,-1) [circle, draw=black!50,fill=red!30,thick] {x};
+
+\node at (3,-2) [circle, draw=black!50,fill=green!30,thick] {o};
+\node at (4,-2) [circle, draw=black!50,fill=red!30,thick] {x};
+\node at (5,-2) [circle, draw=black!50,fill=green!30,thick] {o};
+
+
+\node at (7,1.2){$3\textsuperscript{\underline{o}}$};
+
+\node at (6,0) [circle, draw=black!50,fill=white,thick] {$1\textsuperscript{\underline{o}}$};
+\node at (7,0) [circle, draw=black!50,fill=white,thick] {$2\textsuperscript{\underline{o}}$};
+\node at (8,0) [circle, draw=black!50,fill=white,thick] {$3\textsuperscript{\underline{o}}$};
+
+\node at (6,-1) [circle, draw=black!50,fill=red!30,thick] {x};
+\node at (7,-1) [circle, draw=black!50,fill=red!30,thick] {x};
+\node at (8,-1) [circle, draw=black!50,fill=green!30,thick] {o};
+
+\node at (6,-2) [circle, draw=black!50,fill=green!30,thick] {o};
+\node at (7,-2) [circle, draw=black!50,fill=green!30,thick] {o};
+\node at (8,-2) [circle, draw=black!50,fill=red!30,thick] {o};
+
+
+\end{tikzpicture}
+```
+
+Analisando a Figura 1.2 e sabendo que a probabilidade do prêmio estar atrás de cada uma das portas é igual, concluímos que, se o participante escolher sempre trocar de porta, suas chances de ganhar são de 6 em 9 (ou 2 em 3). Por outro lado, se o participante nunca optar pela troca, suas chances de ganhar são de 3 em 9 (ou 1 em 3).
+
+### Solução utilizando o Teorema de Bayes
+
+> Essa solução utiliza conceitos um pouco mais avançados de probabilidade.
+
+Outra forma de solucionar o problema de Monty Hall seria via Teorema de Bayes.
+
+Denotando por $H_i$, $i \in \{1,2,3\}$, o evento "porta $i$ ser a premiada" e por $W_j$, $j \in \{1,2,3\}$, o evento "porta $j$ ser aberta pelo apresentador" e por $P(H_i|W_j)$ a probabilidade da porta $i$ ser a premiada sendo que a porta $j$ foi aberta, temos:
+
+$$P(H_i|W_j) = \frac{P(W_j|H_i)P(H_i)}{P(W_j)} = \frac{P(W_j|H_i)P(H_i)}{{\displaystyle\sum_{i \in \{1,2,3\}}} P(W_j|H_i)P(H_i)}$$
+Para todo $\forall i,j \in \{ 1,2,3\}$, vale:
+
+$P(H_i)=\frac{1}{3}$;
+
+$P(W_j|H_i) = 0$, quando $j = i$, pois o apresentador nunca abre a porta premiada;
+
+$P(W_j|H_i) = \frac{1}{2}$, quando a porta escolhida pelo participante for igual a $i$, esse resultado surge da generalização de que quando a porta escolhida é a premiada o apresentador pode escolher dentre duas portas qual abrir.
+
+$P(W_j|H_i) = 1$, quando a porta escolhida pelo participante for diferente de $i$,esse resultado surge da generalização de que quando a porta escolhida não é a premiada o apresentador não tem opção de escolha em qual porta abrir.
+
+
+Partindo disso suponha o seguinte cenário, o participante escolher a porta um e o apresentador abrir a porta três, qual é a probabilidade da porta um ser a premiada ?
+
+$$
+\begin{aligned}
+    P(H_1|W_3) =& \frac{P(W_3|H_1)P(H_1)}{P(W_3)} \\
+    =& \frac{P(W_3|H_1)P(H_1)}{P(W_3|H_1)P(H_1) + P(W_3|H_2)P(H_2) + P(W_3|H_3)P(H_3)} \\
+    =& \frac{\frac{1}{2}\frac{1}{3}}{\frac{1}{2}\frac{1}{3} + 1\frac{1}{3} + 0\frac{1}{3}} = \frac{1}{3}
+\end{aligned}
+$$
+
+Assumindo o mesmo cenario, qual é a probabilidade da porta dois ser a premiada ?
+
+$$P(H_2|W_3) = \frac{P(W_3|H_2)P(H_2)}{P(W_3)} = \frac{1\frac{1}{3}}{\frac{1}{2}\frac{1}{3} + 1\frac{1}{3} + 0\frac{1}{3}} = \frac{2}{3}$$
+
+> É importante ressaltar que qualquer adição ou mudança na explicação da teoria para torná-la mais clara e acessível aos participantes é bem-vinda. Diversos são os visitantes da mostra e a explicação que é óbvia para alguns pode ser confusa para outros.
+
+## Aplicação prática
+***
+
+A noção de probabilidade condicional explorada nesse experimento é uma ferramenta crucial para diversos modelos probabilísticos. É comum que um evento aleatório esteja vinculado a um acontecimento prévio, onde o comportamento probabilístico desse evento muda dependendo do resultado desse acontecimento prévio. 
+
+**Como exemplo:**
+
+Suponha que a probabilidade de ocorrerem acidentes em uma determinada via seja um evento aleatório condicionado ao dia da semana. Foi observado que nos dias de segunda e sexta a probabilidade de acidentes é significativamente maior do que nos outros dias da semana, nesse caso seria sensato reforçar a vigilância nessa via especificamente durante esses dias. Assim, ajustando as ações de monitoramento de acordo com a variação das probabilidades, otimizando a segurança com base nos padrões identificados.
+
+
+## Extras
+***
+
+"Aqui está uma boa maneira de visualizar o que aconteceu. Suponha que haja um milhão de portas e você escolha a porta nº 1. Em seguida, o apresentador, que sabe o que está por trás das portas e sempre evitará aquele com o prêmio, abre todas, exceto a porta nº 777.777. Você mudaria para aquela porta bem rápido, não é?" - **Marilyn vos Savant**
+
+
+```{r, echo=FALSE, fig.align='center', fig.cap = 'A definição de prêmio é relativa', out.width="55%"}
+knitr::include_graphics("imagens/funny.png")
+
+```
+
+
+## Referências e leituras complementares
+***
+
+**Paul Meyer**. Probabilidade - Aplicações à Estatística, 2ª ed. capítulo 3.1. “Probabilidade condicionada”.
+
+**Stephanie Glen**. "Monty Hall Problem: Solution Explained Simply" From StatisticsHowTo.com: Elementary Statistics for the rest of us!, disponível em: <https://www.statisticshowto.com/probability-and-statistics/monty-hall-problem/>
+
+**Milos Simic**. "The Monty Hall Problem", disponível em: <https://www.baeldung.com/cs/monty-hall-problem#id222922156>
+
+Figure 1.2 - Disponível em <https://xkcd.com/1282>
+
+
+
+
+
+

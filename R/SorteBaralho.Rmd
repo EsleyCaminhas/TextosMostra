@@ -1,0 +1,120 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath,tikz,]
+header-includes:
+- \usepackage{caption}
+- \captionsetup[figure]{labelformat=empty}
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+# Estou com sorte no baralho?
+***
+
+## Objetivo
+
+***
+
+Introduzir os visitantes da mostra à ideia de medidas resumo, em específico as medidas de média, moda, mediana e amplitude.
+
+## Descrição
+
+***
+
+As medidas resumo correspondem a uma síntese do conjunto de dados observados. Elas nos auxiliam quando precisamos analisar o comportamento de uma quantidade grande de dados.
+
+## Construção
+
+***
+
+Para este experimento só é necessário um conjunto de cartas enumeradas.
+
+## Execução
+
+***
+
+A ideia do experimento é que cada aluno calculará uma das medidas resumo propostas para um certo conjunto de valores. O aluno que responder corretamente mais rápido ganha a brincadeira.
+
+No início, cada aluno pode sortear uma medida para calcular ou uma medida é sorteada para todos.
+
+Logo após, são distribuídas 4 cartas com a face virada para baixo para os alunos. Essas cartas fornecerão o conjunto de valores que cada aluno irá se basear para calcular a medida.
+
+```{r, echo=FALSE, out.width="65%", fig.cap="", fig.show='hold', fig.align='center', eval=TRUE}
+knitr::include_graphics(c("imagens/deck1.png"))
+```
+
+Após todos estarem prontos, o sinal é dado e quem calcular mais rápido ganha.
+
+```{r, echo=FALSE, out.width="65%", fig.cap="", fig.show='hold', fig.align='center', eval=TRUE}
+knitr::include_graphics(c("imagens/deck2.png"))
+```
+
+Observações: 
+
+1. O número de 4 cartas por aluno é uma sugestão; o valor pode ser alterado, caso necessário.
+
+2. Para facilitar os cálculos, cartas podem ser removidas do jogo. Por exemplo, remover números ímpares.
+
+
+## Teoria
+
+***
+
+Segue uma breve apresentação das medidas presentes nesse experimento
+
+### Média
+
+Seja X o conjunto de valores $\scriptstyle \{x_1, x_2, \dots, x_n\}$, a média aritmetica de X, que será denotada por $\scriptstyle \bar{X}$, é definida
+
+$$ \bar{X} = \frac{\sum_{i=1}^n x_i}{n} = \frac{x_1 + x_2 + \dots + x_n}{n}$$
+Ela é classificada como uma medida de tendência central.
+
+### Mediana
+
+Seja X o conjunto de valores $\scriptstyle \{x_1, x_2, \dots, x_n\}$, onde $\scriptstyle x_1 \leq x_2 \leq x_3 \leq \dots \leq x_n$, a **mediana** de X, que será denotada por $\scriptstyle \text{Med}(X)$, é definida como sendo o valor que está no centro, ou seja,  
+
+$$ \text{Med}(X) = x_{[(n + 1)/2]}$$
+quando n, número de valores em X, é impar, e
+
+$$ \text{Med}(X) = \frac{x_{[n/2]}+x_{[(n/2) + 1]}}{2}$$ 
+quando n é par. Ela é classificada como uma medida de tendência central.
+
+### Amplitude
+
+Seja X o conjunto de valores $\scriptstyle \{x_1, x_2, \dots, x_n\}$, a **amplitude** de $\scriptstyle X$, que será denotada $\scriptstyle \text{Amp}(X)$, é definida como sendo a distancia entre os valores extremos de X, ou seja, 
+
+$${\text{Amp}(X)} = X_{(n)} - X_{(1)}$$
+Onde, $\scriptstyle X_{(n)}$ representa o valor que é maior ou igual a todos os outros valores em X e $\scriptstyle X_{(1)}$ representa o valor que é menor ou igual a todos os outros valores em X. Ela é classificada como uma medida de dispersão.
+
+### Moda
+
+A **moda** de X é o valor ou valores, se houver candidatos equiparados, tais que apresentam-se com uma frequência maior que os outros, sendo o conjunto podendo ser amodal quando não possui moda, unimodal quando possui somente uma moda, bimodal quando possui duas modas e multimodal quando possui mais de duas modas. Ela é classificada como uma medida de tendência central.
+
+## Aplicação prática
+***
+
+As medidas de tendência central, como a média, a mediana e a moda, ajudam a resumir um conjunto de dados em um único valor representativo, indicando onde a maioria dos dados está concentrada.
+
+Por outro lado, as medidas de dispersão, como o desvio padrão, a variância e a amplitude, fornecem informações sobre o quão dispersos ou variáveis são os dados em torno da medida de tendência central. Isso é importante para entender a dispersão dos dados e a variabilidade dentro do conjunto, o que pode afetar interpretações e tomadas de decisão.
+
+Em resumo, essas medidas são úteis porque fornecem uma compreensão concisa e quantitativa da distribuição dos dados, permitindo análises e comparações do comportamento dos fenômenos em estudo.
+
+
+## Referências e leituras complementares
+***
+
+**Flavia, Ezequiel, Nei, Vanessa, e Alexandre**. "MEDIDAS DE POSIÇÃO E DISPERSÃO", disponível em:
+<https://impa.br/wp-content/uploads/2019/07/PAPMEM_julho_2019_Nocoes-de-Estatistica_2_parte_Flavia.pdf>
+
+**Anirudh V. S. Ruhil**. "Central Tendency and Dispersion", disponível em:
+<https://people.ohio.edu/ruhil/statsbook/meansd.html>

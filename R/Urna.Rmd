@@ -1,0 +1,124 @@
+---
+title: ""
+author: ""
+date: ""
+output: bookdown::html_document2
+pdf_document:
+  extra_dependencies: [amsmath]
+---
+
+<style type="text/css">
+  body{
+  font-family: Calibri;
+  font-size: 16pt;}
+  p.caption{
+  font-size: 13pt;}
+</style>
+
+
+# Quantos são os papeis na urna ?
+***
+
+## Objetivo
+
+Introduzir os visitantes da mostra a ideia de estimação de quantidades de totais.
+
+## Itens necessários
+
+Para esse experimento são necessários:
+
+* Uma urna transparente, de preferência de forma cubica.
+
+* Grande quantidade de papeis enrolados ou qualquer outro elemento de pequeno tamanho.
+
+
+## Execução
+
+Primeiramente pergunta-se ao visitante qual é o valor que ele acredita que corresponda a quantidade de papeis que estão contidos na urna logo após pode-se sugerir métodos para estimar esse valor.
+
+Após o palpite ser dado a ideia por de trás de cada um dos possíveis métodos deve ser explicada.
+
+> Pode-se também registrar as estimativas dos participantes, caso seja do interesse do monitor.
+
+## Teoria
+
+### Estimando o total usando amostragem aleatória simples
+
+***
+
+Considerando o volume ocupado pelos $N$ rolinhos de papel na urna como sendo $V$ podemos particiona-lo em $q$ porções de igual volume $v$.
+
+```{r, echo=FALSE, fig.align='center', fig.cap = 'Fracionando o volume V em q porçoes de volume v', out.width="55%"}
+knitr::include_graphics("imagens/particao.png")
+```
+
+Note que $V = vq$.
+
+Agora considerando que cada porção $v$ contem $n$ papeis, temos:
+
+$$ N = nq$$
+
+Logo, teoricamente para encontrarmos o total $N$ precisamos somente retirar uma amostra ou porção de volume $v$ e conhecer os valores $q$ e $n$.
+
+Possíveis causas de erro para esse método são:
+
+* Os papeis não são uniformes, variam em tamanho.
+
+* Erro ao particionar V, as porções possuem volume diferente logo contem quantidades diferentes de papeis.
+
+
+Assumindo que exista variação no número de papeis em cada porção, que de fato é a situação do experimento, uma alternativa para minimizar o erro ao estimar o total seria tomar mais de uma amostra.
+
+
+Suponha que foram tomadas $k$ amostras, $1\leq k \leq q$, temos:
+
+$$\bar{n} = \frac{1}{k}\sum_{i = 1}^k \mathit{n_i}$$
+Onde $n_i$ é a quantidade de papeis contidos na i-ésima porção, logo $\bar{n}$ é a média dessa valor.
+
+Por fim temos $\bar{N} = \bar{n}q$, onde $\bar{N}$ é o estimador do total.
+
+Quanto maior for o número de amostras tomadas maior é a chance do valor estimado estar perto do valor real $N$.
+
+### Estimação do total via "sabedoria das multidões"
+***
+
+A ideia de sabedoria das multidões, *wisdom of crowds* em inglês, diz que um coletivo de opiniões e melhor ou mais acurado que a maioria de suas componentes, logo aplicando essa ideia ao experimento temos que se tomarmos a média ou mediana dos palpites esse resultado estará mais próximo, comparado a maioria das opiniões, à real quantidade de papeis na urna.
+
+O caso notório que deu início a ideia de sabedoria das multidões ocorreu no ano de 1906 em uma feira rural em *Plymouth* na Inglaterra onde 800 pessoas participaram de um concurso para estimar o peso total de um boi abatido e preparado. O estatístico Francis Galton observou que a mediana dos palpites observados, 1.207 libras, era preciso dentro de 1\% do peso real de 1.198 libras. Isso contribuiu para a percepção da ciência cognitiva de que os julgamentos individuais de uma multidão podem ser modelados como uma distribuição de probabilidade de respostas com a mediana centralizada próxima ao valor real da quantidade a ser estimada.
+
+Vale o destacar que para a aplicação da ideia de sabedoria das multidões os palpites tem que ser independentes e não viésados.
+
+> É importante ressaltar que qualquer adição ou mudança na explicação da teoria para torná-la mais clara e acessível aos participantes é bem-vinda. Diversos são os visitantes da mostra e a explicação que é óbvia para alguns pode ser confusa para outros.
+
+## Aplicação prática
+***
+
+A teoria de amostragem abordada nesse experimento é parte fundamental da estatística, uma amostra bem selecionada é crucial para uma análise satisfatória. 
+
+**Como exemplo:**
+
+Considere a necessidade de calcular o número total de veículos em uma rodovia em determinada hora. Dada a extensão significativa da rodovia, a contagem exata de cada veículo é impraticável. Portanto, a única opção viável é realizar uma estimativa para determinar a quantidade aproximada de veículos.
+
+Utilizando amostras da população, que nesse caso são os carros contidos em certos segmentos de rodovia, obtemos informações que serão empregadas na estimação do total de carros.
+
+
+## Referências e leituras complementares 
+
+**Pedro Luis do Nascimento Silva, Zélia Magalhães Bianchini e Antonio José Ribeiro Dias**. "Estatísticas, estimadores e estimativas", disponível em:
+
+<https://amostragemcomr.github.io/livro/visger.html#estat%C3%ADsticas-estimadores-e-estimativas>
+
+**David Webb**. "The Wisdom of Crowds (Vox Populi) by Francis Galton", disponível em:
+
+<https://www.all-about-psychology.com/the-wisdom-of-crowds.html>
+
+
+
+
+
+
+
+
+
+
+
